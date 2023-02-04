@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes } from 'react-router';
+import LoginPage from './pages/LoginPage';
 import { getRoomsFetch } from './redux/roomsSlise';
 import { getUsersFetch } from './redux/usersSlice';
 
@@ -15,7 +17,13 @@ function App() {
     dispatch(getRoomsFetch());
   }, []);
 
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
