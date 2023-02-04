@@ -1,14 +1,17 @@
-import { applyMiddleware, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
-import mySaga from './sagas';
+import roomsSlice from './roomsSlise';
+import { rootSaga } from './sagas';
+import usersSlice from './usersSlice';
 
 const sagaMiddleware = createSagaMiddleware();
 
-export default configureStore(
-  {
-    reducer: {},
+export default configureStore({
+  reducer: {
+    users: usersSlice,
+    rooms: roomsSlice,
   },
-  applyMiddleware(sagaMiddleware)
-);
+  middleware: [sagaMiddleware],
+});
 
-sagaMiddleware.run(mySaga);
+sagaMiddleware.run(rootSaga);
