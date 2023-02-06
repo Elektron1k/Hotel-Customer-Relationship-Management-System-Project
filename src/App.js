@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router';
 import LoginPage from './pages/LoginPage';
 import MainLayoutPage from './pages/MainLayoutPage';
 import { getRoomsFetch } from './redux/roomsSlise';
-import { getUsersFetch } from './redux/usersSlice';
+import { getUsersFetch, logIn } from './redux/usersSlice';
 
 function App() {
   const users = useSelector((store) => store.users.users);
@@ -17,6 +17,17 @@ function App() {
     dispatch(getUsersFetch());
     dispatch(getRoomsFetch());
   }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem('user') && localStorage.getItem('password')) {
+      dispatch(
+        logIn({
+          username: localStorage.getItem('user'),
+          password: localStorage.getItem('password'),
+        })
+      );
+    }
+  });
 
   return (
     <div className="App">
