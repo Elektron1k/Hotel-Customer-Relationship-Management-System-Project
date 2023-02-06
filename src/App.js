@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router';
 import LoginPage from './pages/LoginPage';
+import MainLayoutPage from './pages/MainLayoutPage';
 import { getRoomsFetch } from './redux/roomsSlise';
 import { getUsersFetch } from './redux/usersSlice';
 
@@ -20,6 +21,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        <Route path="/" element={<MainLayoutPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
     </div>

@@ -18,7 +18,7 @@ const LoginPage = () => (
       maxWidth: 800,
       margin: '100px auto',
       height: 330,
-      backgroundColor: 'white',
+      background: 'white',
     }}
     initialValues={{ remember: true }}
     onFinish={onFinish}
