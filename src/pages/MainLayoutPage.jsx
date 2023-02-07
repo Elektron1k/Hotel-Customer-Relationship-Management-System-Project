@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Layout, Row, theme } from 'antd';
 import logo from '../img/logo.png';
 import UserCardHeader from '../components/UserCardHeader';
+import { Outlet } from 'react-router-dom';
 
 const { Header, Content } = Layout;
 
@@ -26,7 +27,7 @@ const MainLayoutPage = () => {
         <div
           style={{ padding: 24, minHeight: 380, background: colorBgContainer }}
         >
-          Content
+          <Outlet />
         </div>
       </Content>
     </Layout>

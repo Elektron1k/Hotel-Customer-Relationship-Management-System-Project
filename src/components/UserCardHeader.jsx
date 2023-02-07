@@ -20,7 +20,13 @@ const UserCardHeader = () => {
             gap={2}
             src={activUser.image}
           />
-          <Button type="text" onClick={() => dispatch(logOut())}>
+          <Button
+            type="text"
+            onClick={() => {
+              dispatch(logOut());
+              navigate('/login');
+            }}
+          >
             Log Out
           </Button>
         </>
