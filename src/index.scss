@@ -16,3 +16,14 @@ body {
     }
   }
 }
+
+.paginator-style {
+  li {
+    border-radius: 0 !important;
+    background-color: white;
+    a {
+      background-color: white;
+      border-radius: 0;
+    }
+  }
+}

@@ -4,6 +4,7 @@ export const roomsSlice = createSlice({
   name: 'rooms',
   initialState: {
     rooms: [],
+    roomsForTable: [],
     isLoadingRooms: false,
     errorRooms: '',
   },

@@ -18,13 +18,13 @@ export function* usersSaga() {
 
 export function* workGetRoomsFetch() {
   try {
-    let roomsIdArray = {};
     const rooms = yield call(() => getAllRooms());
-    rooms.forEach((element) => {
-      roomsIdArray[element.id] = { ...element };
+
+    const newRooms = rooms.map((elem) => {
+      return { ...elem, key: elem.id };
     });
 
-    yield put(getRoomsSuccess(roomsIdArray));
+    yield put(getRoomsSuccess(newRooms));
   } catch {
     yield put(getRoomsFailure('Error fetching users'));
   }

@@ -8,6 +8,7 @@ export const usersSlice = createSlice({
     isLoadingUsers: false,
     isAuthentication: false,
     errorAuthentication: false,
+    errorTestAuthentication: false,
     errorUsers: '',
   },
   reducers: {
@@ -32,12 +33,29 @@ export const usersSlice = createSlice({
         state.activUser.name = actions.payload.username;
         state.isAuthentication = true;
         state.errorAuthentication = false;
+
         if (actions.payload.remember) {
           localStorage.setItem('user', actions.payload.username);
           localStorage.setItem('password', actions.payload.password);
         }
       } else {
         state.errorAuthentication = true;
+      }
+    },
+    testLogIn: (state) => {
+      if (localStorage.getItem('user') && localStorage.getItem('password')) {
+        if (
+          state.users[localStorage.getItem('user')] &&
+          state.users[localStorage.getItem('user')].password ===
+            localStorage.getItem('password')
+        ) {
+          state.activUser = state.users[localStorage.getItem('user')];
+          state.activUser.name = localStorage.getItem('user');
+          state.isAuthentication = true;
+          state.errorAuthentication = false;
+        }
+      } else {
+        state.errorTestAuthentication = true;
       }
     },
     logOut: (state) => {
@@ -57,6 +75,7 @@ export const {
   getUsersFailure,
   logIn,
   logOut,
+  testLogIn,
 } = usersSlice.actions;
 
 export default usersSlice.reducer;

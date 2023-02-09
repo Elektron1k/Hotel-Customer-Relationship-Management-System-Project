@@ -14,7 +14,6 @@ const LoginPage = () => {
   );
 
   const onFinish = (values) => {
-    console.log(values);
     dispatch(logIn(values));
     onReset();
   };
