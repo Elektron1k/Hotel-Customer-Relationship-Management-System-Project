@@ -1,5 +1,6 @@
 body {
   background-color: #f5f5f5;
+  margin: 0;
 }
 
 .logo {
@@ -26,4 +27,41 @@ body {
       border-radius: 0;
     }
   }
+}
+
+.room-title {
+  margin: 10px 20px;
+  font-size: 36px;
+  text-decoration: underline;
+}
+
+.room-params {
+  font-weight: bold;
+  margin: 15px 20px;
+  span {
+    font-weight: normal;
+  }
+}
+
+.single-page-button {
+  margin: 10px;
+  border-radius: 0;
+}
+
+.list-item-features {
+  border: none !important;
+  margin: 0;
+  padding: 0 20px !important;
+}
+
+.room-description {
+  margin-top: 50px;
+}
+
+.room-params-item {
+  margin-right: 5px;
+}
+
+.room-description-title {
+  font-weight: bold;
 }

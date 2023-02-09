@@ -4,7 +4,7 @@ export const roomsSlice = createSlice({
   name: 'rooms',
   initialState: {
     rooms: [],
-    roomsForTable: [],
+    chosenRoom: [],
     isLoadingRooms: false,
     errorRooms: '',
   },
@@ -20,11 +20,20 @@ export const roomsSlice = createSlice({
       state.isLoadingRooms = false;
       state.errorRooms = actions.payload;
     },
+    getChosenRoom: (state, action) => {
+      state.chosenRoom = state.rooms.filter(
+        (room) => room.id === action.payload
+      );
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { getRoomsFetch, getRoomsSuccess, getRoomsFailure } =
-  roomsSlice.actions;
+export const {
+  getRoomsFetch,
+  getRoomsSuccess,
+  getRoomsFailure,
+  getChosenRoom,
+} = roomsSlice.actions;
 
 export default roomsSlice.reducer;
