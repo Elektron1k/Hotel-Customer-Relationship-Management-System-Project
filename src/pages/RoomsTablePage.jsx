@@ -122,8 +122,7 @@ const RoomsTablePage = () => {
       ),
     },
   ];
-  const handleChange = (pagination, filters, sorter) => {
-    console.log('Various parameters', pagination, filters, sorter);
+  const handleChange = (pagination, filters) => {
     setFilteredInfo(filters);
     if (filters.guest === 'vacant_rooms') {
       setChecked(true);

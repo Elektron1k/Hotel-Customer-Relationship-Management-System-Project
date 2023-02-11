@@ -17,7 +17,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+export const db = getDatabase(app);
 
 export const roomRef = ref(db, 'Rooms');
 export const accountRef = ref(db, 'Accounts');

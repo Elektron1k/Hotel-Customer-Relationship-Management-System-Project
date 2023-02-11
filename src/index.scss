@@ -65,3 +65,12 @@ body {
 .room-description-title {
   font-weight: bold;
 }
+
+.ant-modal-content {
+  border-radius: 0 !important;
+}
+.ant-modal-footer {
+  button {
+    border-radius: 0 !important;
+  }
+}

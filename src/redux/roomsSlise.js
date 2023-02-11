@@ -7,6 +7,7 @@ export const roomsSlice = createSlice({
     chosenRoom: [],
     isLoadingRooms: false,
     errorRooms: '',
+    idInFirebase: null,
   },
   reducers: {
     getRoomsFetch: (state) => {
@@ -24,7 +25,14 @@ export const roomsSlice = createSlice({
       state.chosenRoom = state.rooms.filter(
         (room) => room.id === action.payload
       );
+      state.rooms.map((room, index) => {
+        if (room.id === action.payload) {
+          state.idInFirebase = index;
+        }
+      });
     },
+    getCheckOut: () => {},
+    getCheckIn: () => {},
   },
 });
 
@@ -34,6 +42,8 @@ export const {
   getRoomsSuccess,
   getRoomsFailure,
   getChosenRoom,
+  getCheckOut,
+  getCheckIn,
 } = roomsSlice.actions;
 
 export default roomsSlice.reducer;

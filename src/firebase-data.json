@@ -9,7 +9,7 @@
       "image": "https://firebasestorage.googleapis.com/v0/b/hotel-da9e2.appspot.com/o/avatar-370-456322-512.webp?alt=media&token=21617e25-bdab-4468-b50b-13c1d77fbbd3"
     }
   },
-  "Rooms": [
+  "Rooms": {
     {
       "id": "0a2ce3a9-cc19-48eb-bb3b-faf492e5f591",
       "number": 1,
@@ -450,5 +450,5 @@
       ],
       "description": "Esse sit enim aute Lorem in eiusmod. Anim laborum exercitation fugiat deserunt laboris ea qui culpa minim adipisicing ipsum eiusmod sunt incididunt. In adipisicing anim amet ex anim nostrud amet anim. Ullamco cillum id reprehenderit qui amet Lorem magna nulla esse do. Non eu enim elit amet. Qui consequat laboris ea excepteur reprehenderit irure et anim nulla velit sint mollit consectetur eu.\n\nSunt ipsum eiusmod ea et culpa eu velit culpa nostrud enim mollit. Duis sint qui pariatur ex cupidatat dolor laboris nostrud ea tempor ut esse proident. Quis voluptate laborum ut velit voluptate ex velit elit veniam tempor id. Minim commodo eiusmod nisi aliquip deserunt enim sunt nostrud eiusmod.\n\nIrure culpa amet esse tempor nisi cillum consectetur eu esse cupidatat commodo anim dolore. Velit aute aute cillum nulla est non. Eiusmod laboris dolore ipsum excepteur magna. Mollit commodo eu sit nisi aute consectetur aute aliqua aliqua anim ea deserunt. Deserunt veniam adipisicing velit reprehenderit tempor nostrud consectetur magna veniam."
     }
-  ]
+  }
 }

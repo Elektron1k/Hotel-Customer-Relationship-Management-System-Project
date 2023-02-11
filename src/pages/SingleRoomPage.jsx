@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Carousel, Col, List, Row, Space, Spin } from 'antd';
 import { CheckOutlined, HomeOutlined } from '@ant-design/icons';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getChosenRoom } from '../redux/roomsSlise';
+import { getCheckOut, getChosenRoom, getCheckIn } from '../redux/roomsSlise';
+import CheckOut from '../components/CheckOut';
+import CheckIn from '../components/CheckIn';
+import dayjs from 'dayjs';
 
 const SingleRoomPage = () => {
   const navigate = useNavigate();
@@ -12,6 +15,32 @@ const SingleRoomPage = () => {
   const rooms = useSelector((state) => state.rooms);
   const contentStyle = {
     margin: '20px 0',
+  };
+
+  const [isCheckOutOpen, setIsCheckOutOpen] = useState(false);
+  const [isCheckInOpen, setIsCheckInOpen] = useState(false);
+  const handleOkCheckOut = () => {
+    dispatch(getCheckOut(rooms.idInFirebase));
+    setIsCheckOutOpen(false);
+  };
+  const handleCancelCheckOut = () => {
+    setIsCheckOutOpen(false);
+  };
+  const showCheckOut = () => {
+    setIsCheckOutOpen(true);
+  };
+  const handleOkCheckIn = (name, date) => {
+    if (name) {
+      const newDate = date ? dayjs(date).format('YYYY-MM-DD') : null;
+      dispatch(getCheckIn({ name, newDate, idInFirebase: rooms.idInFirebase }));
+    }
+    setIsCheckInOpen(false);
+  };
+  const handleCancelCheckIn = () => {
+    setIsCheckInOpen(false);
+  };
+  const showCheckIn = () => {
+    setIsCheckInOpen(true);
   };
 
   useEffect(() => {
@@ -32,6 +61,17 @@ const SingleRoomPage = () => {
       </Space>
       {rooms.chosenRoom[0] ? (
         <>
+          <CheckIn
+            isCheckInOpen={isCheckInOpen}
+            handleOkCheckIn={handleOkCheckIn}
+            handleCancelCheckIn={handleCancelCheckIn}
+          />
+          <CheckOut
+            isCheckOutOpen={isCheckOutOpen}
+            handleOkCheckOut={handleOkCheckOut}
+            handleCancelCheckOut={handleCancelCheckOut}
+            roomNumber={rooms.chosenRoom[0].number}
+          />
           <Row>
             <Col span={10}>
               <Carousel>
@@ -65,8 +105,22 @@ const SingleRoomPage = () => {
                 </Col>
                 <Col span={12}>
                   <Row justify="end">
-                    <Button className="single-page-button">Check In</Button>
-                    <Button type="primary" className="single-page-button">
+                    <Button
+                      type={
+                        rooms.chosenRoom[0].isCheckedIn ? 'default' : 'primary'
+                      }
+                      className="single-page-button"
+                      onClick={showCheckIn}
+                    >
+                      Check In
+                    </Button>
+                    <Button
+                      type={
+                        rooms.chosenRoom[0].isCheckedIn ? 'primary' : 'default'
+                      }
+                      className="single-page-button"
+                      onClick={showCheckOut}
+                    >
                       Check Out
                     </Button>
                   </Row>
